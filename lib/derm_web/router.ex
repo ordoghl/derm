@@ -18,6 +18,7 @@ defmodule DermWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/patients", PatientController
   end
 
   # Other scopes may use custom stacks.
