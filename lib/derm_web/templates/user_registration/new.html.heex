@@ -1,5 +1,5 @@
-<h1>Register</h1>
-
+<div class="mb-4 text-center text-2xl font-bold text-gray-700">Register</div>
+<div class="mb-4 text-center text-gray-500">Please register a new account</div>
 <.form let={f} for={@changeset} action={Routes.user_registration_path(@conn, :create)}>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
@@ -7,20 +7,26 @@
     </div>
   <% end %>
 
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-  <%= error_tag f, :email %>
+  <div class="mb-4">
+    <.input f={f} type="email" field={:email} required={true} autofocus={true} />
+    <%= error_tag(f, :email) %>
+  </div>
 
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-  <%= error_tag f, :password %>
+  <div class="mb-4">
+    <.input f={f} type="password" field={:password} required={true} />
+    <%= error_tag(f, :password) %>
+  </div>
 
-  <div>
-    <%= submit "Register" %>
+  <div class="mt-8">
+    <.submit_button label="Register" />
   </div>
 </.form>
 
-<p>
-  <%= link "Log in", to: Routes.user_session_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+<div class="mt-8 flex flex-row justify-between">
+  <div>
+    <.anchor label="Log in" to={Routes.user_session_path(@conn, :new)} />
+  </div>
+  <div>
+    <.anchor label="Forgot your password?" to={Routes.user_reset_password_path(@conn, :new)} />
+  </div>
+</div>

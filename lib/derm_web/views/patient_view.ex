@@ -6,7 +6,7 @@ defmodule DermWeb.PatientView do
   end
 
   def year_range(interval \\ 130) do
-    current_year = DateTime.utc_now.year
-    [current_year - interval..current_year]
+    current_year = DateTime.utc_now().year
+    [(current_year - interval)..current_year]
   end
 end

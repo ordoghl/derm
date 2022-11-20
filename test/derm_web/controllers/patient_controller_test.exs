@@ -4,7 +4,12 @@ defmodule DermWeb.PatientControllerTest do
   import Derm.PatientsFixtures
 
   @create_attrs %{dob: ~D[2022-11-18], name: "some name", sex: :female, ssn: "some ssn"}
-  @update_attrs %{dob: ~D[2022-11-19], name: "some updated name", sex: :male, ssn: "some updated ssn"}
+  @update_attrs %{
+    dob: ~D[2022-11-19],
+    name: "some updated name",
+    sex: :male,
+    ssn: "some updated ssn"
+  }
   @invalid_attrs %{dob: nil, name: nil, sex: nil, ssn: nil}
 
   describe "index" do

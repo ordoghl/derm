@@ -36,7 +36,13 @@ defmodule Derm.PatientsTest do
 
     test "update_patient/2 with valid data updates the patient" do
       patient = patient_fixture()
-      update_attrs = %{dob: ~D[2022-11-19], name: "some updated name", sex: :male, ssn: "some updated ssn"}
+
+      update_attrs = %{
+        dob: ~D[2022-11-19],
+        name: "some updated name",
+        sex: :male,
+        ssn: "some updated ssn"
+      }
 
       assert {:ok, %Patient{} = patient} = Patients.update_patient(patient, update_attrs)
       assert patient.dob == ~D[2022-11-19]

@@ -1,27 +1,31 @@
-<h1>Log in</h1>
-
+<div class="mb-4 text-center text-2xl font-bold text-gray-700">Sign In</div>
+<div class="mb-4 text-center text-gray-500">Please sign in to your account</div>
 <.form let={f} for={@conn} action={Routes.user_session_path(@conn, :create)} as={:user}>
   <%= if @error_message do %>
-    <div class="alert alert-danger">
-      <p><%= @error_message %></p>
+    <div class="border border-red-400 bg-red-100 p-2 rounded-md text-red-500 mb-2">
+      <%= @error_message %>
     </div>
   <% end %>
-
-  <%= label f, :email %>
-  <%= email_input f, :email, required: true %>
-
-  <%= label f, :password %>
-  <%= password_input f, :password, required: true %>
-
-  <%= label f, :remember_me, "Keep me logged in for 60 days" %>
-  <%= checkbox f, :remember_me %>
-
-  <div>
-    <%= submit "Log in" %>
+  <div class="mb-4">
+    <.input f={f} type="email" field="email" required={true} autofocus={true} />
+  </div>
+  <div class="mb-4">
+    <.input f={f} type="password" field="password" required={true} />
+  </div>
+  <div class="mb-4">
+    <.input f={f} type="checkbox" field="remember_me" label="Keep me logged in for 60 days" />
+  </div>
+  <div class="mt-8">
+    <.submit_button label="Log in" />
   </div>
 </.form>
+<div class="mt-8 flex flex-row justify-between">
+  <div>
+    <.anchor label="Register" to={Routes.user_registration_path(@conn, :new)} />
+  </div>
 
-<p>
-  <%= link "Register", to: Routes.user_registration_path(@conn, :new) %> |
-  <%= link "Forgot your password?", to: Routes.user_reset_password_path(@conn, :new) %>
-</p>
+  <div>
+    <.anchor label="Forgot your password?" to={Routes.user_reset_password_path(@conn, :new)} />
+  </div>
+</div>
+<div class="mt-8 text-center text-gray-400">Copyright (c) 2022</div>

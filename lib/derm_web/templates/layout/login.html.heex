@@ -1,0 +1,7 @@
+<div class="flex w-full items-center">
+  <div class="w-96 center mx-auto inline-block rounded-lg border-2 border-gray-200 bg-white p-8 shadow-xl">
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    <%= @inner_content %>
+  </div>
+</div>

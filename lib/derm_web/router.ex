@@ -17,6 +17,10 @@ defmodule DermWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :login_layout do
+    plug :put_layout, {DermWeb.LayoutView, :login}
+  end
+
   scope "/", DermWeb do
     pipe_through :browser
 
@@ -61,7 +65,7 @@ defmodule DermWeb.Router do
   ## Authentication routes
 
   scope "/", DermWeb do
-    pipe_through [:browser, :redirect_if_user_is_authenticated]
+    pipe_through [:browser, :login_layout, :redirect_if_user_is_authenticated]
 
     get "/users/register", UserRegistrationController, :new
     post "/users/register", UserRegistrationController, :create
